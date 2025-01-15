@@ -39,6 +39,7 @@ def statistical_analysis(df, col: str):
 
 
 def preprocessing(df):
+    # You should preprocess your data in this function and make use of quick features such as 'describe'
     return df
 
 
@@ -46,7 +47,7 @@ def writing(moments, col):
     print(f'For the attribute {col}:')
     print(f'Mean = {moments[0]:.2f}, '
           f'Standard Deviation = {moments[1]:.2f}, '
-          f'Skewness = {moments[2]:.2f}, and'
+          f'Skewness = {moments[2]:.2f}, and '
           f'Excess Kurtosis = {moments[3]:.2f}.')
     # Delete the following options as appropriate for your data.
     # Not skewed and mesokurtic can be defined with asymmetries <-2 or >2.
