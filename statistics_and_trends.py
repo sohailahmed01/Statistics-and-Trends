@@ -4,48 +4,65 @@ You will be expected to complete all the sections and make this a fully working,
 You should NOT change any function or variable names, if they are given to you here.
 Make use of the functions presented in the lectures and ensure your code is PEP-8 compliant, including docstrings.
 """
-from typing import Tuple
-
 from corner import corner
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy.stats import skew, kurtosis
+import scipy.stats as ss
 import seaborn as sns
 
 
-def plot_relational_plot(df: pd.DataFrame) -> None:
+def plot_relational_plot(df):
     fig, ax = plt.subplots()
     plt.savefig('relational_plot.png')
     return
 
 
-def plot_categorical_plot(df: pd.DataFrame) -> None:
+def plot_categorical_plot(df):
     fig, ax = plt.subplots()
     plt.savefig('categorical_plot.png')
     return
 
 
-def plot_statistical_plot(df: pd.DataFrame) -> None:
+def plot_statistical_plot(df):
     fig, ax = plt.subplots()
     plt.savefig('statistical_plot.png')
     return
 
 
-def statistical_analysis(df: pd.DataFrame) -> Tuple[float, float, float, float]:
-    mean = np.mean(df[''])
-    stddev = np.std(df[''])
-    skewness = skew(df[''])
-    excess_kurtosis = kurtosis(df[''])
-    return mean, stddev, skewness, excess_kurtosis
+def statistical_analysis(df, col: str):
+    mean = np.mean(df[col])
+    stddev = np.std(df[col])
+    skew = ss.skew(df[col])
+    excess_kurtosis = ss.kurtosis(df[col])
+    return mean, stddev, skew, excess_kurtosis
 
 
-def preprocessing(df: pd.DataFrame) -> pd.DataFrame:
+def preprocessing(df):
     return df
+
+
+def writing(moments, col):
+    print(f'For the attribute {col}:')
+    print(f'Mean = {moments[0]:.2f}, '
+          f'Standard Deviation = {moments[1]:.2f}, '
+          f'Skewness = {moments[2]:.2f}, and'
+          f'Excess Kurtosis = {moments[3]:.2f}.')
+    # Delete the following options as appropriate for your data.
+    # Not skewed and mesokurtic can be defined with asymmetries <-2 or >2.
+    print('The data was right/left/not skewed and platy/meso/leptokurtic.')
+    return
 
 
 def main():
     df = pd.read_csv('data.csv')
+    df = preprocessing(df)
+    col = ''
+    plot_relational_plot(df)
+    plot_statistical_plot(df)
+    plot_categorical_plot(df)
+    moments = statistical_analysis(df, col)
+    writing(moments, col)
     return
 
 
