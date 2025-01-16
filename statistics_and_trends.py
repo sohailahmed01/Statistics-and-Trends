@@ -1,8 +1,11 @@
 """
 This is the template file for the statistics and trends assignment.
-You will be expected to complete all the sections and make this a fully working, documented file.
-You should NOT change any function or variable names, if they are given to you here.
-Make use of the functions presented in the lectures and ensure your code is PEP-8 compliant, including docstrings.
+You will be expected to complete all the sections and
+make this a fully working, documented file.
+You should NOT change any function, file or variable names,
+ if they are given to you here.
+Make use of the functions presented in the lectures
+and ensure your code is PEP-8 compliant, including docstrings.
 """
 from corner import corner
 import matplotlib.pyplot as plt
@@ -31,15 +34,16 @@ def plot_statistical_plot(df):
 
 
 def statistical_analysis(df, col: str):
-    mean = np.mean(df[col])
-    stddev = np.std(df[col])
-    skew = ss.skew(df[col])
-    excess_kurtosis = ss.kurtosis(df[col])
+    mean =
+    stddev =
+    skew =
+    excess_kurtosis =
     return mean, stddev, skew, excess_kurtosis
 
 
 def preprocessing(df):
-    # You should preprocess your data in this function and make use of quick features such as 'describe'
+    # You should preprocess your data in this function and
+    # make use of quick features such as 'describe', 'head/tail' and 'corr'.
     return df
 
 
@@ -58,7 +62,7 @@ def writing(moments, col):
 def main():
     df = pd.read_csv('data.csv')
     df = preprocessing(df)
-    col = ''
+    col = '<your chosen column for analysis>'
     plot_relational_plot(df)
     plot_statistical_plot(df)
     plot_categorical_plot(df)
